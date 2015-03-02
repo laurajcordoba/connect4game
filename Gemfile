@@ -23,6 +23,10 @@ gem 'spring',        group: :development
 # Views
 gem 'haml'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
 group :test do
   # Collection of testing matchers
   gem 'shoulda-matchers'
@@ -30,6 +34,4 @@ group :test do
   gem 'database_cleaner'
   # Launchy so we can use the save_and_open_page functionality when testing.
   gem 'launchy'
-  # Rspec
-  gem "rspec-rails", ">= 2.0.1"
 end
