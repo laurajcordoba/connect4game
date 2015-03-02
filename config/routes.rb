@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  get 'push' => 'players#push'
 
   resources :players
+
+  root 'welcome#index'
 end

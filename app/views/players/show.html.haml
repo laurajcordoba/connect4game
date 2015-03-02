@@ -1,1 +1,17 @@
-= "Show of Player #{@player.name}"
+#board
+  %h1
+    = "Player: #{@player.name} (#{@player.color.capitalize})"
+    = "Winner: #{@winner}"
+
+  - if @finished
+    Game finished, start a new one:
+    = link_to "Go to play a new Game", root_path
+
+  - else
+    %table
+      %tbody
+        - @board.each_with_index do |row, i|
+          %tr
+            - row.each_with_index do |column, j|
+              - flag_class = (column == nil) ? 'unmarked' : 'marked'
+              %td.tdelem{ class: "#{flag_class} #{column}", data: { i: "#{i}", j: "#{j}", id: "#{@player.id}" } }= column

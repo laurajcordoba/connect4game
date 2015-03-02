@@ -7,4 +7,20 @@ class Game < ActiveRecord::Base
   # == Validations
   validates :player_one_id, :player_two_id, presence: true
 
+  # == Public instance methods
+  def opponent(player)
+    (player == player_one) ? player_two : player_one
+  end
+
+  # == Check if the board is fully
+  def self.fully?(board)
+    result = []
+
+    board.each do |row|
+     result << (row.all? &:nil?)
+    end
+
+    !result.all?
+  end
+
 end
